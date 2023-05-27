@@ -23,9 +23,13 @@ export function Dropdown({ setIsChrome }: DropdownProps) {
   }
 
   return (
-    <select onChange={handleChange}>
-      <option value={CHROME}>Chrome</option>
-      <option value={OTHERS}>それ以外</option>
-    </select>
+    <div className="relative inline-block text-left">
+      <select onChange={handleChange}
+        className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+      >
+        <option value={CHROME} className="text-gray-600">Chrome</option>
+        <option value={OTHERS} className="text-gray-600">それ以外</option>
+      </select>
+    </div>
   );
 }
