@@ -1,5 +1,5 @@
 import './App.css';
-import RealTimeTranscription from './Recorder'
+import {TrascribeSwitcher} from './TranscribeSwitcher'
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         real-time transcriber
       </header>
-      <RealTimeTranscription />
+      <TrascribeSwitcher />
     </div>
   );
 }
