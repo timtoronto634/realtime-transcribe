@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Recorder.css';
+import { RecordingButton } from './RecordingButton';
 
 // Define SpeechRecognition type
 const SpeechRecognition =
@@ -70,9 +71,12 @@ const RealTimeTranscription: React.FC<Props> = () => {
           <p key={index}>{line}</p>
         ))}
       </div>
-      <button onClick={startRecognition}>スタート</button>
-      <button onClick={stopRecognition}>ストップ</button>
-      <button onClick={resetTranscript}>リセット</button>
+      <div>
+        <RecordingButton startRecord={startRecognition} endRecord={stopRecognition} />
+      </div>
+      <div>
+        <button onClick={resetTranscript}>リセット</button>
+      </div>
     </div>
   );
 };

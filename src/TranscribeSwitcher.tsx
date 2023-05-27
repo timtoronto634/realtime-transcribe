@@ -12,7 +12,7 @@ export function TrascribeSwitcher() {
       <Dropdown isChrome={isChrome} setIsChrome={setIsChrome} />
     {isChrome ? 
       <RealTimeTranscription />
-      : null}
+      : <div>開発中</div>}
     </div>
   )
 }
