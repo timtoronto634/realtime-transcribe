@@ -1,67 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import './Recorder.css';
-import { RecordingButton } from './RecordingButton';
+import React, { useState, useEffect } from 'react'
+import './Recorder.css'
+import { RecordingButton } from './RecordingButton'
 
 // Define SpeechRecognition type
 const SpeechRecognition =
-  (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+  (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
 
 interface Props {}
 
 const RealTimeTranscription: React.FC<Props> = () => {
-  const [transcript, setTranscript] = useState<string>('スタートを押して話してみてください');
-  const [recognition, setRecognition] = useState<typeof SpeechRecognition | null>(null);
+  const [transcript, setTranscript] = useState<string>('スタートを押して話してみてください')
+  const [recognition, setRecognition] = useState<typeof SpeechRecognition | null>(null)
 
   useEffect(() => {
     if (!SpeechRecognition) {
-      alert('Your browser does not support the Web Speech API.');
-      return;
+      alert('Your browser does not support the Web Speech API.')
+      return
     }
 
-    const recognitionInstance = new SpeechRecognition();
-    recognitionInstance.continuous = true;
-    recognitionInstance.interimResults = true;
-    recognitionInstance.lang = 'ja-JP';
+    const recognitionInstance = new SpeechRecognition()
+    recognitionInstance.continuous = true
+    recognitionInstance.interimResults = true
+    recognitionInstance.lang = 'ja-JP'
 
     recognitionInstance.onresult = (event: any) => {
       for (let i = event.resultIndex; i < event.results.length; i++) {
         if (event.results[i].isFinal) {
-          const newTranscript = event.results[i][0].transcript;
-          setTranscript((prevTranscript) => prevTranscript + '\n' + newTranscript);
+          const newTranscript = event.results[i][0].transcript
+          setTranscript((prevTranscript) => prevTranscript + '\n' + newTranscript)
         }
       }
-    };
+    }
 
     recognitionInstance.onerror = (event: any) => {
-      console.error('Error:', event.error);
-    };
+      console.error('Error:', event.error)
+    }
 
-    setRecognition(recognitionInstance);
+    setRecognition(recognitionInstance)
 
     return () => {
       if (recognitionInstance) {
-        recognitionInstance.stop();
+        recognitionInstance.stop()
       }
-    };
-  }, []);
+    }
+  }, [])
 
   const startRecognition = () => {
     if (recognition) {
-      recognition.start();
+      recognition.start()
     }
-  };
+  }
 
   const stopRecognition = () => {
     if (recognition) {
-      recognition.stop();
+      recognition.stop()
     }
-  };
+  }
 
   const resetTranscript = () => {
     if (recognition) {
-      setTranscript('');
+      setTranscript('')
     }
-  };
+  }
 
   return (
     <div>
@@ -78,7 +78,7 @@ const RealTimeTranscription: React.FC<Props> = () => {
         <button onClick={resetTranscript}>リセット</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RealTimeTranscription;
+export default RealTimeTranscription

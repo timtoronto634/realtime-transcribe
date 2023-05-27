@@ -1,7 +1,7 @@
-import './App.css';
-import {TrascribeSwitcher} from './TranscribeSwitcher'
+import './App.css'
+import { TrascribeSwitcher } from './TranscribeSwitcher'
 
-function App() {
+function App () {
   return (
     <div className="App">
       <header className="App-header">
@@ -9,7 +9,7 @@ function App() {
       </header>
       <TrascribeSwitcher />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

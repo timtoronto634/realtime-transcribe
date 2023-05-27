@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 interface DropdownProps {
-  isChrome: boolean,
-  setIsChrome: React.Dispatch<React.SetStateAction<boolean>>,
+  isChrome: boolean
+  setIsChrome: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const CHROME = "chrome"
-const OTHERS = "others"
+const CHROME = 'chrome'
+const OTHERS = 'others'
 
-export function Dropdown({ setIsChrome }: DropdownProps) {
+export function Dropdown ({ setIsChrome }: DropdownProps) {
   const handleChange = (event: any) => {
     switch (event.target.value) {
       case CHROME:
@@ -31,5 +31,5 @@ export function Dropdown({ setIsChrome }: DropdownProps) {
         <option value={OTHERS} className="text-gray-600">それ以外</option>
       </select>
     </div>
-  );
+  )
 }
